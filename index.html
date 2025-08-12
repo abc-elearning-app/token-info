@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tokens — Your Reward Points</title>
+    <style>
+      :root {
+        --bg: linear-gradient(to bottom, #eff2fb, #f9f9fb);
+        --card: #ffffff;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --brand: #5b7cff;
+        --border: #e5e7eb;
+        --chip: #fff7cc;
+        --chip-text: #8a6d00;
+        --radius: 16px;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+      }
+      .wrapper {
+        max-width: 720px;
+      }
+      .hero {
+        position: relative;
+        background: none;
+        border-radius: 0;
+        overflow: hidden;
+        padding: 0;
+        box-shadow: none;
+      }
+
+      .hero img {
+        display: block;
+        width: auto;
+        max-width: 100%;
+        height: auto;
+      }
+
+      .card {
+        background: none;
+        border-radius: 0;
+        padding: 16px;
+        margin-top: 0;
+        box-shadow: none;
+        border: none;
+      }
+      h1 {
+        margin: 0 0 6px;
+        font-size: 1.6rem;
+        color: #4471fd;
+        text-align: center;
+      }
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 700;
+        margin: 18px 0 8px;
+        font-size: 1.05rem;
+      }
+      .roman {
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+      .lead {
+        margin: 0 0 12px;
+        color: #4b5563;
+      }
+      .table-wrap {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+        background: #fff;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead th {
+        background: #f9fafb;
+        text-align: left;
+        font-weight: 600;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--border);
+      }
+      tbody td {
+        padding: 12px 14px;
+        vertical-align: top;
+        border-top: 1px solid var(--border);
+      }
+      tbody tr:first-child td {
+        border-top: none;
+      }
+      tbody td:first-child {
+        color: rgba(33, 33, 33, 0.8);
+        padding-left: calc(14px + 1.2em);
+        text-indent: -1.2em;
+        text-align: left; /* Ensure text is left-aligned */
+      }
+      .tokens {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .token-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px 8px;
+        background: var(--chip);
+        color: var(--chip-text);
+        border-radius: 999px;
+        border: 1px solid #f4e6a6;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      .token-chip img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+      }
+      .token-plain {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: #ffb000;
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      .token-plain img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+      }
+      .token-plain .token-label {
+        color: #4b5563;
+      }
+      .muted {
+        color: var(--muted);
+      }
+      @media (max-width: 560px) {
+        h1 {
+          font-size: 1.35rem;
+        }
+      }
+      .list {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 16px;
+      }
+      .list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        margin: 8px 0;
+      }
+      .bullet-icon {
+        width: 18px;
+        height: 18px;
+        margin-top: 3px;
+        flex: 0 0 18px;
+      }
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: #9ca3af;
+        margin-top: 10px;
+        display: inline-block;
+        flex: 0 0 6px;
+      }
+      .link {
+        color: #2563eb;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+      }
+      .link:hover {
+        text-decoration: none;
+      }
+      .token-exchange-list strong {
+        color: #ffb000;
+        font-weight: normal; /* Set font weight to normal */
+      }
+      .table-wrap table th:first-child,
+      .table-wrap table td:first-child {
+        border-right: 1px solid var(--border);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper">
+      <!-- Top banner -->
+      <section class="hero">
+        <img
+          src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/banner.png"
+          alt="Tokens banner"
+          onerror="this.style.display='none'"
+        />
+      </section>
+
+      <!-- Content card -->
+      <section class="card">
+        <h1>Tokens — Your Reward Points</h1>
+
+        <!-- I. What Are Tokens? -->
+        <h2 class="section-title">
+          <span class="roman">I.</span> What Are Tokens?
+        </h2>
+        <p class="lead">
+          Tokens are special points you earn while using the app. They reward
+          your learning progress, consistency, and achievements. The more you
+          learn and practice, the more tokens you can collect.
+        </p>
+
+        <!-- II. How to Earn Tokens -->
+        <h2 class="section-title">
+          <span class="roman">II.</span> How to Earn Tokens
+        </h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Condition</th>
+                <th>Tokens Earned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  • Complete 1 Core in Study Section for the first time. Each
+                  Core only rewards once.
+                </td>
+                <td>
+                  <div class="tokens">
+                    <span class="token-plain">
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +1 token
+                    </span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  • Get ≥10 correct answers in any Test; every 10 correct
+                  answers = +1 token. Only extra correct answers from retakes
+                  count.
+                </td>
+                <td>
+                  <div class="tokens">
+                    <span class="token-plain">
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +1 token per 10 correct answers
+                    </span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  • Complete the Daily Challenge with all answers correct. Only
+                  rewarded once per day.
+                </td>
+                <td>
+                  <div class="tokens">
+                    <span class="token-plain">
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +1 token
+                    </span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>• Unlock a badge.</td>
+                <td>
+                  <div class="tokens">
+                    <span class="token-plain">
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +1 token per badge
+                    </span>
+                  </div>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  • Rank in Top 10 on the Weekly Leaderboard.
+                  <span class="muted">Only rewarded once per week.</span>
+                </td>
+                <td>
+                  <div class="tokens">
+                    <div class="token-plain">
+                      <span class="token-label">Top 1:</span>
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +10 tokens
+                    </div>
+                    <div class="token-plain">
+                      <span class="token-label">Top 2–3:</span>
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +7 tokens
+                    </div>
+                    <div class="token-plain">
+                      <span class="token-label">Top 4–10:</span>
+                      <img
+                        src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+                        alt="token"
+                        onerror="this.remove()"
+                      />
+                      +4 tokens
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="section-title">
+          <span class="roman">III.</span> How to Use Tokens
+        </h2>
+        <p class="lead">
+          Tokens can be exchanged for <strong>FREE PRO days</strong>:
+        </p>
+
+        <ul class="list token-exchange-list">
+          <li>
+            <img
+              class="bullet-icon"
+              src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+              alt="token"
+            />
+            <span style="color: #ffb000">15 tokens</span> = 1 PRO day
+          </li>
+          <li>
+            <img
+              class="bullet-icon"
+              src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+              alt="token"
+            />
+            <span style="color: #ffb000">25 tokens</span> = 2 PRO days
+          </li>
+          <li>
+            <img
+              class="bullet-icon"
+              src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+              alt="token"
+            />
+            <span style="color: #ffb000">40 tokens</span> = 3 PRO days
+          </li>
+          <li>
+            <img
+              class="bullet-icon"
+              src="https://raw.githubusercontent.com/abc-elearning-app/referral-program/main/token.png"
+              alt="token"
+            />
+            <span style="color: #ffb000">50 tokens</span> = 4 PRO days
+          </li>
+        </ul>
+
+        <!-- IV. Important Rules -->
+        <h2 class="section-title">
+          <span class="roman">IV.</span> Important Rules
+        </h2>
+        <ul class="list">
+          <li>
+            <span class="dot"></span>
+            <span>Maximum token storage: <strong>50 tokens</strong>.</span>
+          </li>
+          <li>
+            <span class="dot"></span>
+            <span
+              >If you reach 50 tokens and don't exchange them, you won't earn
+              more until you spend some.</span
+            >
+          </li>
+        </ul>
+
+        <!-- V. Want PRO Now Without Waiting? -->
+        <h2 class="section-title">
+          <span class="roman">V.</span> Want PRO Now Without Waiting?
+        </h2>
+        <p class="lead">
+          If you don't want to spend time collecting tokens, you can
+          <a class="link" href="#" rel="noopener">buy PRO now</a> to unlock all
+          features instantly.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
