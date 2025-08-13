@@ -8,7 +8,7 @@
       :root {
         --bg: linear-gradient(to bottom, #eff2fb, #f9f9fb);
         --card: #ffffff;
-        --text: #1f2937;
+        --text: rgba(33, 33, 33, 0.8);
         --muted: #6b7280;
         --brand: #5b7cff;
         --border: #e5e7eb;
@@ -25,6 +25,7 @@
           sans-serif;
         color: var(--text);
         background: var(--bg);
+        font-weight: 400; /* Set default text weight to regular */
       }
       .wrapper {
         max-width: 720px;
@@ -101,7 +102,7 @@
         border-top: none;
       }
       tbody td:first-child {
-        color: rgba(33, 33, 33, 0.8);
+        color: var(--text);
         padding-left: calc(14px + 1.2em);
         text-indent: -1.2em;
         text-align: left; /* Ensure text is left-aligned */
@@ -185,6 +186,7 @@
         color: #2563eb;
         text-decoration: underline;
         text-underline-offset: 2px;
+        text-decoration: underline;
       }
       .link:hover {
         text-decoration: none;
